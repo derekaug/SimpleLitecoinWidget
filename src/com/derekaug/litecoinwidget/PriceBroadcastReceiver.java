@@ -20,7 +20,7 @@ public class PriceBroadcastReceiver extends BroadcastReceiver
 {
 
 	private static final String BTCE = "https://btc-e.com/api/2/ltc_usd/ticker";
-
+	
 	@Override
 	public void onReceive(final Context context, final Intent intent) 
 	{
