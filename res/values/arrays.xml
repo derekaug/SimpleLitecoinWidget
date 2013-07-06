@@ -24,20 +24,5 @@
     </string-array>
     <string-array name="currencies">
         <item>USD</item>
-        <item>AUD</item>
-        <item>CAD</item>
-        <item>CHF</item>
-        <item>CNY</item>
-        <item>DKK</item>
-        <item>EUR</item>
-        <item>GBP</item>
-        <item>HKD</item>
-        <item>JPY</item>
-        <item>NZD</item>
-        <item>PLN</item>
-        <item>RUB</item>
-        <item>SEK</item>
-        <item>SGD</item>
-        <item>THB</item>
     </string-array>
 </resources>

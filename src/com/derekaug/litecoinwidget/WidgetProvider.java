@@ -9,14 +9,17 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 import com.derekaug.litecoinwidget.R;
 
-public class WidgetProvider extends AppWidgetProvider {
+public class WidgetProvider extends AppWidgetProvider 
+{
 	
 	@Override
-	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) 
+	{
 		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
 		//used to upgrade old apps to new way of saving data...
 		doWidgetUpdate(context, appWidgetIds);
-		for (int widgetId : appWidgetIds) {
+		for (int widgetId : appWidgetIds) 
+		{
 			setAlarm(context, widgetId);
 			Intent i = new Intent(context, PriceBroadcastReceiver.class);
 			i.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
@@ -26,9 +29,11 @@ public class WidgetProvider extends AppWidgetProvider {
 		}
 	}
 
-	private void doWidgetUpdate(Context context, int[] appWidgetIds) {
+	private void doWidgetUpdate(Context context, int[] appWidgetIds) 
+	{
 		int oldInterval = Prefs.getOldInterval(context);
-		if(oldInterval != -1) {
+		if(oldInterval != -1) 
+		{
 			for (int widgetId : appWidgetIds) {
 				Prefs.setValues(context, widgetId, "USD", oldInterval);
 			}
@@ -38,8 +43,10 @@ public class WidgetProvider extends AppWidgetProvider {
 	}
 
 	@Override
-	public void onDeleted(Context context, int[] appWidgetIds) {
-		for (int widgetId : appWidgetIds) {
+	public void onDeleted(Context context, int[] appWidgetIds) 
+	{
+		for (int widgetId : appWidgetIds)
+		{
 			Prefs.delete(context, widgetId);
 			Intent i = new Intent(context, PriceBroadcastReceiver.class);
 			PendingIntent pi = PendingIntent.getBroadcast(context, widgetId + 1000, i, 0);
@@ -48,7 +55,8 @@ public class WidgetProvider extends AppWidgetProvider {
 		}
 	}
 	
-	private void setAlarm(Context context, int widgetId) {
+	private void setAlarm(Context context, int widgetId) 
+	{
 		AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		Intent i = new Intent(context, PriceBroadcastReceiver.class);
 		i.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);

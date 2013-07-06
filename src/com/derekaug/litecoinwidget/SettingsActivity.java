@@ -8,8 +8,8 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import com.derekaug.litecoinwidget.R;
 
-public class SettingsActivity extends PreferenceActivity {
-	
+public class SettingsActivity extends PreferenceActivity 
+{	
     private Preference refresh;
 	private Preference currency;
 	private int appWidgetId;
@@ -18,7 +18,8 @@ public class SettingsActivity extends PreferenceActivity {
 
 	@SuppressWarnings("deprecation")
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		Bundle extras = getIntent().getExtras();
 		appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
@@ -28,10 +29,12 @@ public class SettingsActivity extends PreferenceActivity {
         currency = findPreference(getString(R.string.key_currency));
 
         setRefresh(Prefs.getInterval(this, appWidgetId));
-        refresh.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+        refresh.setOnPreferenceChangeListener(new OnPreferenceChangeListener()
+        {
 			
 			@Override
-			public boolean onPreferenceChange(Preference p, Object value) {
+			public boolean onPreferenceChange(Preference p, Object value) 
+			{
 				setRefresh(Integer.valueOf(value.toString()));
 				return true;
 			}
@@ -43,7 +46,8 @@ public class SettingsActivity extends PreferenceActivity {
         currency.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 			
 			@Override
-			public boolean onPreferenceChange(Preference p, Object value) {
+			public boolean onPreferenceChange(Preference p, Object value) 
+			{
 				currencyValue = value.toString();
 				p.setSummary(getString(R.string.summary_currency, currencyValue));
 				return true;
@@ -51,17 +55,22 @@ public class SettingsActivity extends PreferenceActivity {
 		});
     }
     
-    private void setRefresh(int rate) {
+    private void setRefresh(int rate) 
+    {
     	refreshValue = rate;
-    	if(rate < 60) {
+    	if(rate < 60) 
+    	{
     		refresh.setSummary(getResources().getQuantityString(R.plurals.summary_refresh_interval_minute, rate, rate));
-    	} else {
+    	}
+    	else 
+    	{
     		refresh.setSummary(getResources().getQuantityString(R.plurals.summary_refresh_interval_hour, rate/60, rate/60));
     	}
 	}
     
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() 
+    {
     	Intent broadcast = new Intent(this, WidgetProvider.class);
     	broadcast.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
     	broadcast.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, new int[]{appWidgetId});
@@ -72,5 +81,4 @@ public class SettingsActivity extends PreferenceActivity {
     	setResult(RESULT_OK, result);
     	finish();
     }
-
 }

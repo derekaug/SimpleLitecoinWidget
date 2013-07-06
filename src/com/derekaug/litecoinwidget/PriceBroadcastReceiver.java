@@ -16,7 +16,8 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 import com.derekaug.litecoinwidget.R;
 
-public class PriceBroadcastReceiver extends BroadcastReceiver {
+public class PriceBroadcastReceiver extends BroadcastReceiver 
+{
 
 	private static final String BTCE = "https://btc-e.com/api/2/ltc_usd/ticker";
 
