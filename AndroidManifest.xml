@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.brentpanther.bitcoinwidget"
-    android:versionCode="6"
-    android:versionName="1.5" >
+    package="com.derekaug.litecoinwidget"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -12,9 +12,9 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@drawable/bitcoinwidgeticon"
+        android:icon="@drawable/icon_litecoin_widget"
         android:label="@string/app_name" >
-        <receiver android:name=".WidgetProvider" >
+        <receiver android:name="com.derekaug.litecoinwidget.WidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -23,10 +23,10 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widgetinfo" />
         </receiver>
-        <receiver android:name=".PriceBroadcastReceiver" />
+        <receiver android:name="com.derekaug.litecoinwidget.PriceBroadcastReceiver" />
 
          <activity
-            android:name=".SettingsActivity" >
+            android:name="com.derekaug.litecoinwidget.SettingsActivity" >
 			<intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
