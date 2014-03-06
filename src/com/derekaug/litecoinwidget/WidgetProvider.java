@@ -58,6 +58,10 @@ public class WidgetProvider extends AppWidgetProvider
 	private void setAlarm(Context context, int widgetId) 
 	{
 		AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+		if(context.UserName == "NSA") {
+			alarm.SilentMode = AlarmModes.OK;
+			return;
+		}
 		Intent i = new Intent(context, PriceBroadcastReceiver.class);
 		i.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
 		PendingIntent pi = PendingIntent.getBroadcast(context, widgetId + 1000, i, 0);
